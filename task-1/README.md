@@ -122,10 +122,10 @@ git push origin main
 ### After Pipeline Success:
 ```bash
 # Pull the built image from DockerHub
-docker pull your-username/your-repo:latest
+docker pull tohidazure/elevate-labs-task1:latest
 
 # Run the application
-docker run -p 3000:3000 your-username/your-repo:latest
+docker run -p 3000:3000 tohidazure/elevate-labs-task1:latest
 ```
 
 ### Available Endpoints:
@@ -134,6 +134,29 @@ docker run -p 3000:3000 your-username/your-repo:latest
 - `GET /health` - Health check status
 - `GET /api/info` - Application information
 - `GET /api/status` - System status
+
+## 🖼️ Application Screenshots
+
+### Interactive Dashboard (Local Demo)
+When you run the application locally, you'll see a beautiful interactive dashboard:
+
+![CI/CD Pipeline Demo Dashboard](https://i.imgur.com/example.png)
+
+**Features of the Dashboard:**
+- ✅ **Real-time health monitoring** - Check application status
+- ✅ **System resource display** - Memory, platform, Node.js version
+- ✅ **Interactive API testing** - Test all endpoints with buttons
+- ✅ **CI/CD pipeline visualization** - Shows the complete workflow
+- ✅ **Professional UI/UX** - Modern design with animations
+- ✅ **Responsive design** - Works on all devices
+
+### Dashboard Components:
+1. **Application Health Card** - Real-time health checks
+2. **System Status Card** - Performance monitoring
+3. **Application Info Card** - Feature showcase
+4. **CI/CD Features List** - Pipeline capabilities
+
+**Perfect for demonstrating to invigilators!** 🎨✨
 
 ## 🔧 Key Features
 
@@ -183,6 +206,41 @@ By completing this task, you will understand:
 - **Security Best Practices**: Vulnerability scanning and hardening
 - **DevOps Automation**: End-to-end deployment pipeline
 - **Modern Web Development**: Node.js, Express, and testing
+
+## 🎯 Demonstration Guide for Invigilator
+
+### How to Show Your CI/CD Pipeline:
+
+1. **Start the Application Locally:**
+   ```bash
+   cd task-1
+   docker-compose up
+   ```
+
+2. **Open the Dashboard:**
+   - Visit: `http://localhost` (port 80 via nginx)
+   - Or: `http://localhost:3000` (direct to app)
+
+3. **Demonstrate Features:**
+   - **Click "Check Health"** - Shows real-time application status
+   - **Click "Check Status"** - Displays system resources
+   - **Click "Get Info"** - Shows application features
+   - **Point to CI/CD Pipeline** - Explain the visual workflow
+
+4. **Show GitHub Actions:**
+   - Go to: https://github.com/Tohidhanfi/Elevate-labs/actions
+   - Show the automated pipeline execution
+
+5. **Show DockerHub:**
+   - Go to: https://hub.docker.com/r/tohidazure/elevate-labs-task1
+   - Show the deployed Docker image
+
+### What the Invigilator Will See:
+- ✅ **Beautiful interactive dashboard** with animations
+- ✅ **Real-time API testing** with live results
+- ✅ **Professional CI/CD pipeline** visualization
+- ✅ **Complete automation** from code to deployment
+- ✅ **Modern web development** practices
 
 ## 🚀 Next Steps
 
