@@ -22,21 +22,21 @@ jobs:
       with:
         node-version: '18'
         cache: 'npm'
-        cache-dependency-path: 'src/package-lock.json'
+        cache-dependency-path: 'task-1/src/package-lock.json'
         
     - name: Install dependencies
       run: |
-        cd src
+        cd task-1/src
         npm ci --production=false
         
     - name: Run tests
       run: |
-        cd src
+        cd task-1/src
         npm test -- --forceExit
         
     - name: Run linting (if configured)
       run: |
-        cd src
+        cd task-1/src
         npm run lint || echo "Linting not configured"
 
   build-and-push:
@@ -63,8 +63,8 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v5
       with:
-        context: .
-        file: ./Dockerfile
+        context: ./task-1
+        file: ./task-1/Dockerfile
         push: true
         tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
         cache-from: type=gha
