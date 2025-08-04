@@ -7,9 +7,9 @@ afterAll(done => {
 });
 
 describe('Node.js Demo App', () => {
-  describe('GET /', () => {
+  describe('GET /api', () => {
     it('should return welcome message and app info', async () => {
-      const response = await request(app).get('/');
+      const response = await request(app).get('/api');
       
       expect(response.status).toBe(200);
       expect(response.body).toHaveProperty('message');
