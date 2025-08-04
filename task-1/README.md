@@ -27,6 +27,8 @@ task-1/
 ├── .dockerignore           # Docker optimization
 ├── docker-compose.yml      # Local development (optional)
 ├── nginx.conf             # Basic reverse proxy config
+├── images/                 # Screenshots and demo images
+│   └── dashboard-screenshot.png # Dashboard screenshot
 ├── .gitignore            # Version control exclusions
 └── README.md             # This documentation
 ```
@@ -140,7 +142,7 @@ docker run -p 3000:3000 tohidazure/elevate-labs-task1:latest
 ### Interactive Dashboard (Local Demo)
 When you run the application locally, you'll see a beautiful interactive dashboard:
 
-![CI/CD Pipeline Demo Dashboard](https://i.imgur.com/example.png)
+![CI/CD Pipeline Demo Dashboard](./images/dashboard-screenshot.png)
 
 **Features of the Dashboard:**
 - ✅ **Real-time health monitoring** - Check application status
