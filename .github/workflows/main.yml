@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: tohidhanfi/nodejs-cicd-demo
+  IMAGE_NAME: tohidhanfi/elevate-labs-task1
 
 jobs:
   test:
