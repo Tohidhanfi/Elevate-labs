@@ -5,16 +5,17 @@ pipeline {
         DOCKER_IMAGE = 'elevate-labs-app'
         DOCKER_TAG = "${env.BUILD_NUMBER}"
         CONTAINER_NAME = 'elevate-labs-container'
+        REPO_URL = 'https://github.com/Tohidhanfi/Elevate-labs.git'
     }
     
     stages {
         stage('Checkout') {
             steps {
                 echo 'Checking out source code...'
-                // Clean workspace first
+                // Clean workspace and clone repository
                 cleanWs()
-                // Checkout from SCM
-                checkout scm
+                sh "git clone ${REPO_URL} ."
+                sh "git checkout main"
             }
         }
         
