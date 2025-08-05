@@ -1,45 +1,29 @@
-# Task 2: Jenkins CI/CD Pipeline - Elevate Labs
+# Task 2: Jenkins CI/CD Pipeline
 
-## 🚀 Overview
+## Overview
+Jenkins CI/CD pipeline implementation for the Elevate Labs application on Ubuntu server.
 
-This task demonstrates the implementation of a complete Jenkins CI/CD pipeline for the Elevate Labs application. The pipeline automates the build, test, and deployment process using Docker containers on an Ubuntu server.
+## Requirements ✅
+- Jenkins on Ubuntu server
+- Docker integration
+- Automated testing
+- Continuous deployment
 
-## 📋 Task Requirements
-
-- ✅ Set up Jenkins on Ubuntu server (native installation)
-- ✅ Configure CI/CD pipeline with Docker integration
-- ✅ Implement automated testing
-- ✅ Enable continuous deployment
-- ✅ Create comprehensive documentation
-
-## 🏗️ Architecture
-
-### Infrastructure
-- **Server**: Ubuntu 22.04 LTS
-- **CI/CD Tool**: Jenkins (Native Installation)
-- **Containerization**: Docker
+## Architecture
+- **Server**: Ubuntu 22.04 LTS (18.217.91.170)
+- **CI/CD**: Jenkins (Native Installation)
+- **Container**: Docker
 - **Runtime**: Node.js
-- **Repository**: GitHub
 
-### Pipeline Stages
-1. **Checkout**: Clone source code from GitHub
-2. **Build**: Create Docker image
-3. **Test**: Run automated tests
-4. **Deploy**: Deploy application container
+## Setup
 
-## 🛠️ Setup Instructions
-
-### 1. Server Setup (Ubuntu)
-
+### 1. Server Setup
 ```bash
-# Update system
-sudo apt update && sudo apt upgrade -y
-
 # Install Java 17
 sudo apt install -y openjdk-17-jdk
 
 # Install Docker
-sudo apt install -y docker.io docker-compose
+sudo apt install -y docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
 
@@ -51,23 +35,18 @@ sudo apt install -y jenkins
 
 # Add jenkins user to docker group
 sudo usermod -aG docker jenkins
-
-# Start Jenkins
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 ```
 
 ### 2. Jenkins Configuration
-
-#### Required Plugins
+**Required Plugins:**
 - Git plugin
 - Docker plugin
 - Pipeline plugin
-- Credentials plugin
 
-#### Credentials Setup
-1. **GitHub Credentials**: Add GitHub personal access token
-2. **Docker Credentials**: Configure Docker registry access (if needed)
+**Credentials:**
+- GitHub personal access token
 
 ### 3. Pipeline Configuration
 
@@ -85,14 +64,12 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Checking out source code...'
                 checkout scm
             }
         }
         
         stage('Build') {
             steps {
-                echo 'Building Docker image...'
                 dir('task-1') {
                     sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
                 }
@@ -101,7 +78,6 @@ pipeline {
         
         stage('Test') {
             steps {
-                echo 'Running tests...'
                 dir('task-1') {
                     sh "docker run --rm ${DOCKER_IMAGE}:${DOCKER_TAG} npm test"
                 }
@@ -110,146 +86,51 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
                 sh "docker stop ${CONTAINER_NAME} || true"
                 sh "docker rm ${CONTAINER_NAME} || true"
                 sh "docker run -d --name ${CONTAINER_NAME} -p 3000:3000 ${DOCKER_IMAGE}:${DOCKER_TAG}"
             }
         }
     }
-    
-    post {
-        success {
-            echo 'Pipeline completed successfully!'
-            echo "Application deployed at: http://localhost:3000"
-        }
-        failure {
-            echo 'Pipeline failed!'
-        }
-    }
 }
 ```
 
-## 📊 Results & Screenshots
+## Results
 
-### Application Deployment
-![Application Dashboard](task-1/images/dashboard-screenshot.png)
+### Application Screenshot
+![Task 2 Application](task-1/images/task-2-app.png)
 
-**Application Features:**
-- ✅ Express.js Framework
-- ✅ CORS Enabled
-- ✅ Security Headers with Helmet
-- ✅ Health Check Endpoint
-- ✅ Docker Containerization
-- ✅ Jenkins CI/CD Pipeline
-- ✅ Automated Testing
-- ✅ Continuous Deployment
-- ✅ Ubuntu Native Installation
-- ✅ Minimal Plugin Configuration
+### Jenkins Pipeline Screenshot
+![Jenkins Pipeline](task-1/images/Jenkins-pipeline.png)
 
-### Jenkins Pipeline
-![Jenkins Pipeline](task-1/images/jenkins-pipeline.png)
-
-**Pipeline Statistics:**
+### Pipeline Statistics
 - **Total Builds**: 5 successful builds
 - **Average Build Time**: ~7 seconds
 - **Success Rate**: 100%
-- **Last Build**: #5 (9 minutes ago)
+- **Pipeline Job**: Elevate-Labs-CI-CD
 
-**Stage Performance:**
-- Checkout: ~320ms
-- Build: ~830ms
-- Test: ~2s
-- Deploy: ~1s
-
-## 🔧 Technical Details
-
-### Application Structure
-```
-task-1/
-├── src/
-│   ├── app.js              # Main application
-│   ├── package.json        # Dependencies
-│   └── public/
-│       └── index.html      # Landing page
-├── Dockerfile              # Container configuration
-├── docker-compose.yml      # Local development
-└── images/
-    ├── dashboard-screenshot.png
-    └── jenkins-pipeline.png
-```
-
-### Docker Configuration
-```dockerfile
-FROM node:18-alpine
-WORKDIR /app
-COPY src/package*.json ./
-RUN npm install
-COPY src/ .
-EXPOSE 3000
-CMD ["npm", "start"]
-```
-
-### Environment Variables
-- `PORT`: 3000
-- `NODE_ENV`: production
-- `DOCKER_IMAGE`: elevate-labs-app
-- `CONTAINER_NAME`: elevate-labs-container
-
-## 🚀 Deployment
-
-### Access URLs
+## Access URLs
 - **Application**: http://18.217.91.170:3000
 - **Jenkins**: http://18.217.91.170:8080
 
-### Health Checks
+## Health Checks
 - **Application Health**: `/health`
 - **API Info**: `/api/info`
 - **Status**: `/api/status`
 
-## 📈 Monitoring & Logs
-
-### Jenkins Logs
+## Monitoring
 ```bash
+# Jenkins logs
 sudo journalctl -u jenkins -f
-```
 
-### Docker Logs
-```bash
+# Docker logs
 docker logs elevate-labs-container
+
+# Application status
+curl http://18.217.91.170:3000/health
 ```
 
-### Application Logs
-```bash
-docker exec elevate-labs-container npm start
-```
-
-## 🔄 Continuous Integration
-
-### Trigger Conditions
-- Push to main branch
-- Pull request creation
-- Manual trigger
-
-### Pipeline Features
-- ✅ Automatic code checkout
-- ✅ Docker image building
-- ✅ Unit test execution
-- ✅ Container deployment
-- ✅ Health check validation
-- ✅ Rollback capability
-
-## 🛡️ Security
-
-### Implemented Security Measures
-- ✅ Helmet.js security headers
-- ✅ CORS configuration
-- ✅ Docker container isolation
-- ✅ Non-root user in containers
-- ✅ Secure credential management
-
-## 📝 API Endpoints
-
+## API Endpoints
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/` | GET | Landing page |
@@ -257,41 +138,6 @@ docker exec elevate-labs-container npm start
 | `/api/info` | GET | Application info |
 | `/api/status` | GET | Status information |
 
-## 🎯 Success Metrics
-
-- ✅ **Zero-downtime deployment**: Achieved
-- ✅ **Automated testing**: Implemented
-- ✅ **Container orchestration**: Functional
-- ✅ **CI/CD pipeline**: Operational
-- ✅ **Monitoring**: Configured
-- ✅ **Documentation**: Complete
-
-## 🔮 Future Enhancements
-
-### Planned Improvements
-- [ ] Multi-stage Docker builds
-- [ ] Blue-green deployment
-- [ ] Automated rollback
-- [ ] Performance monitoring
-- [ ] Security scanning
-- [ ] Load balancing
-
-### Scalability Considerations
-- [ ] Kubernetes deployment
-- [ ] Auto-scaling configuration
-- [ ] Database integration
-- [ ] Cache layer implementation
-
-## 📞 Support
-
-For issues or questions regarding this implementation:
-
-1. Check Jenkins logs: `sudo journalctl -u jenkins -f`
-2. Verify Docker status: `sudo systemctl status docker`
-3. Test application: `curl http://localhost:3000/health`
-4. Review pipeline configuration in Jenkins UI
-
 ---
 
-**Built with ❤️ for Task 2: Jenkins CI/CD Pipeline**  
-**Elevate Labs - DevOps & CI/CD Demonstration** 
+**Task 2: Jenkins CI/CD Pipeline - Elevate Labs** 
