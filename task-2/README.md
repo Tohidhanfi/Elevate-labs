@@ -98,10 +98,10 @@ pipeline {
 ## Results
 
 ### Application Screenshot
-![Task 2 Application](task-1/images/task-2-app.png)
+![Task 2 Application](../task-1/images/task-2-app.png)
 
 ### Jenkins Pipeline Screenshot
-![Jenkins Pipeline](task-1/images/Jenkins-pipeline.png)
+![Jenkins Pipeline](../task-1/images/Jenkins-pipeline.png)
 
 ### Pipeline Statistics
 - **Total Builds**: 5 successful builds
