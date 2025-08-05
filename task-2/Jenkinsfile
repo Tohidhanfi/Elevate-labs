@@ -20,8 +20,9 @@ pipeline {
                 echo 'Building Docker image...'
                 dir('task-1') {
                     script {
-                        sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
-                        sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
+                        // Try to build with sudo if needed
+                        sh "sudo docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . || docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                        sh "sudo docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest || docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
                     }
                 }
             }
@@ -33,7 +34,7 @@ pipeline {
                 dir('task-1') {
                     script {
                         // Run the application tests
-                        sh "docker run --rm ${DOCKER_IMAGE}:${DOCKER_TAG} npm test"
+                        sh "sudo docker run --rm ${DOCKER_IMAGE}:${DOCKER_TAG} npm test || docker run --rm ${DOCKER_IMAGE}:${DOCKER_TAG} npm test"
                     }
                 }
             }
@@ -49,11 +50,11 @@ pipeline {
                 echo 'Deploying application...'
                 script {
                     // Stop and remove existing container
-                    sh "docker stop ${CONTAINER_NAME} || true"
-                    sh "docker rm ${CONTAINER_NAME} || true"
+                    sh "sudo docker stop ${CONTAINER_NAME} || docker stop ${CONTAINER_NAME} || true"
+                    sh "sudo docker rm ${CONTAINER_NAME} || docker rm ${CONTAINER_NAME} || true"
                     
                     // Run new container
-                    sh "docker run -d --name ${CONTAINER_NAME} -p 3000:3000 ${DOCKER_IMAGE}:${DOCKER_TAG}"
+                    sh "sudo docker run -d --name ${CONTAINER_NAME} -p 3000:3000 ${DOCKER_IMAGE}:${DOCKER_TAG} || docker run -d --name ${CONTAINER_NAME} -p 3000:3000 ${DOCKER_IMAGE}:${DOCKER_TAG}"
                     
                     // Wait for application to start
                     sh "sleep 10"
@@ -69,7 +70,7 @@ pipeline {
                 echo 'Cleaning up old images...'
                 script {
                     // Remove old images (keep last 5)
-                    sh "docker images ${DOCKER_IMAGE} --format 'table {{.Repository}}:{{.Tag}}' | tail -n +6 | xargs -r docker rmi || true"
+                    sh "sudo docker images ${DOCKER_IMAGE} --format 'table {{.Repository}}:{{.Tag}}' | tail -n +6 | xargs -r sudo docker rmi || docker images ${DOCKER_IMAGE} --format 'table {{.Repository}}:{{.Tag}}' | tail -n +6 | xargs -r docker rmi || true"
                 }
             }
         }
@@ -83,8 +84,8 @@ pipeline {
         failure {
             echo 'Pipeline failed!'
             // Cleanup on failure
-            sh "docker stop ${CONTAINER_NAME} || true"
-            sh "docker rm ${CONTAINER_NAME} || true"
+            sh "sudo docker stop ${CONTAINER_NAME} || docker stop ${CONTAINER_NAME} || true"
+            sh "sudo docker rm ${CONTAINER_NAME} || docker rm ${CONTAINER_NAME} || true"
         }
         always {
             echo 'Pipeline execution completed'
