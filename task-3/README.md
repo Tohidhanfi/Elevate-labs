@@ -37,7 +37,7 @@ task-3/
 
 ### **🐳 Proof of Running Containers:**
 
-![Docker Containers Running](../task-1/images/docker\ ps.png)
+![Docker Containers Running](../task-1/images/docker%20ps.png)
 
 *Screenshot showing both `task3-web-app` and `task3-database` containers running successfully with healthy status*
 
