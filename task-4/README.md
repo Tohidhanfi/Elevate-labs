@@ -71,11 +71,8 @@ task-4/
 │   └── public/
 │       └── index.html     # Frontend dashboard
 ├── tests/
-│   └── unit/
-│       └── app.test.js    # Unit tests
-└── docs/
-    ├── CONTRIBUTING.md    # Contributing guidelines
-    └── DEPLOYMENT.md      # Deployment guide
+       └── unit/
+       └── app.test.js    # Unit tests
 ```
 
 ## Git Workflow
@@ -86,16 +83,6 @@ task-4/
 - `feature/*`: Feature branches
 - `hotfix/*`: Emergency fixes
 
-### Commit Convention
-```
-feat: add new feature
-fix: bug fix
-docs: documentation changes
-style: code formatting
-refactor: code refactoring
-test: adding tests
-chore: maintenance tasks
-```
 
 ## Setup Instructions
 
@@ -152,36 +139,11 @@ git push origin v1.0.0
 - **DevOps Features**: Feature overview
 - **API Testing**: Interactive endpoint testing
 
-## Git Best Practices
+## Application Screenshot
 
-### 1. Branch Protection Rules
-- Require pull request reviews
-- Require status checks to pass
-- Require branches to be up to date
-- Restrict pushes to main
+![Task 4 Application Running](../task-1/images/task4.png)
 
-### 2. Commit Messages
-- Use conventional commit format
-- Be descriptive and clear
-- Reference issues when applicable
-
-### 3. Pull Request Process
-- Create descriptive PR titles
-- Add detailed descriptions
-- Request code reviews
-- Address review comments
-
-### 4. Tagging Strategy
-```bash
-# Feature releases
-git tag -a v1.1.0 -m "Add user authentication"
-
-# Bug fixes
-git tag -a v1.0.1 -m "Fix login timeout issue"
-
-# Major releases
-git tag -a v2.0.0 -m "Major refactor with new architecture"
-```
+*Proof of application running successfully - Task 4 DevOps Project with Git version control*
 
 ## Quick Start
 
@@ -262,58 +224,3 @@ git pull origin main
 git checkout feature/branch-name
 git rebase main
 ```
-
-## Troubleshooting
-
-### Common Git Issues
-
-1. **Merge Conflicts**
-   ```bash
-   git status
-   git diff
-   # Resolve conflicts manually
-   git add .
-   git commit
-   ```
-
-2. **Reset to Previous Commit**
-   ```bash
-   git reset --hard HEAD~1
-   ```
-
-3. **Recover Deleted Branch**
-   ```bash
-   git reflog
-   git checkout -b recovered-branch <commit-hash>
-   ```
-
-## Learning Outcomes
-
-By completing this task, you will learn:
-
-- ✅ **Git Version Control**: Proper repository management
-- ✅ **Branching Strategies**: Feature, dev, and main branches
-- ✅ **Pull Request Workflow**: Code review process
-- ✅ **Commit Conventions**: Standardized commit messages
-- ✅ **Tagging**: Release management with tags
-- ✅ **Documentation**: Markdown documentation practices
-- ✅ **Team Collaboration**: Git-based teamwork
-
-## Next Steps
-
-1. **Set up branch protection rules** on GitHub
-2. **Create pull request templates**
-3. **Establish code review guidelines**
-4. **Set up automated testing** (optional)
-5. **Implement release automation** (optional)
-
-## Resources
-
-- [Git Documentation](https://git-scm.com/doc)
-- [GitHub Guides](https://guides.github.com/)
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/)
-
----
-
-**Remember**: This task focuses on Git version control workflows, not CI/CD. The goal is to master proper Git practices, branching strategies, and collaborative development workflows. 
