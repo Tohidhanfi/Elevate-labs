@@ -141,7 +141,7 @@ git push origin v1.0.0
 
 ## Application Screenshot
 
-![Task 4 Application Running](../task-1/images/task4.png)
+![Task 4 Application Running](../task-1/images/task4git.png)
 
 *Proof of application running successfully - Task 4 DevOps Project with Git version control*
 
