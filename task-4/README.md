@@ -145,7 +145,7 @@ git push origin v1.0.0
 
 *Proof of application running successfully - Task 4 DevOps Project with Git version control*
 
-## Quick Start
+##  Quick Start
 
 ### Run the Application
 ```bash
