@@ -1,0 +1,48 @@
+{
+  "name": "task4-version-controlled-devops",
+  "version": "1.0.0",
+  "description": "Task 4 - Version-Controlled DevOps Project with Git",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest --forceExit",
+    "test:coverage": "jest --coverage --forceExit",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "task4",
+    "devops",
+    "git",
+    "version-control",
+    "nodejs",
+    "express"
+  ],
+  "author": "tohidhanfi",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "nodemon": "^3.0.2",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tohidhanfi/Elevate-labs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tohidhanfi/Elevate-labs/issues"
+  },
+  "homepage": "https://github.com/tohidhanfi/Elevate-labs#readme"
+} 
