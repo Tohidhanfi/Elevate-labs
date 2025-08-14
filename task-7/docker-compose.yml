@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  netdata:
+    image: netdata/netdata:latest
+    container_name: netdata
+    hostname: netdata-server
+    ports:
+      - "19999:19999"
+    volumes:
+      - netdata-config:/etc/netdata
+      - netdata-cache:/var/cache/netdata
+      - netdata-logs:/var/log/netdata
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /etc/passwd:/host/etc/passwd:ro
+      - /etc/group:/host/etc/group:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - NETDATA_HOST_OS=linux
+      - NETDATA_HOST_PROC=/host/proc
+      - NETDATA_HOST_SYS=/host/sys
+      - NETDATA_HOST_ETC_PASSWD=/host/etc/passwd
+      - NETDATA_HOST_ETC_GROUP=/host/etc/group
+    restart: unless-stopped
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    privileged: true
+
+volumes:
+  netdata-config:
+  netdata-cache:
+  netdata-logs: 
