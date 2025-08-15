@@ -119,16 +119,6 @@ docker run -p 8080:8080 jenkins/jenkins:lts
 3. Click on the build number to view details
 4. Click **Console Output** to see the build logs
 
-### 7. Expected Output
-
-You should see output similar to:
-```
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  X.XXX s
-[INFO] Finished at: 2024-XX-XX
-[INFO] ------------------------------------------------------------------------
-```
 
 ## 🎯 Learning Outcomes
 
@@ -140,12 +130,53 @@ After completing this task, you'll understand:
 - **How to read and understand console output** for debugging
 - **Basic CI/CD concepts** and workflow
 
-## 📸 Screenshots
+## 📸 Screenshots from Task
 
-Include screenshots of:
-- Jenkins dashboard with your job
-- Successful build console output
-- Job configuration page
+Below are the screenshots demonstrating the successful completion of Task 8 - Running a Simple Java Maven Build Job in Jenkins:
+
+### 1. Jenkins Dashboard
+![Jenkins Dashboard](../task-1/images/jenkins-dashboard.png.png)
+*Jenkins main dashboard showing the `hello-java-maven` job with successful build status*
+
+### 2. Successful Build Console Output
+![Build Console Output](../task-1/images/build-console.png.png)
+*Console output showing successful Maven build with BUILD SUCCESS message*
+
+### 3. Job Configuration Page
+![Job Configuration](../task-1/images/job-configuration.png.png)
+*Jenkins job configuration showing Git repository, Maven build steps, and artifact archiving*
+
+### 4. Build Artifacts
+![Build Artifacts](../task-1/images/build-artifacts.png.png)
+*Generated JAR file (hello-1.0.jar) in the build artifacts section*
+
+### 5. Local Maven Build Test
+![Local Maven Build](../task-1/images/local-maven-build.png.png)
+*Local terminal showing successful `mvn clean package` command execution*
+
+## ✅ Task Completion Summary
+
+This task has been successfully completed with the following achievements:
+
+- ✅ **Java and Maven** installed and configured locally
+- ✅ **Jenkins** running successfully via Docker container
+- ✅ **Git repository** created with proper source code structure
+- ✅ **Jenkins job** configured with Git SCM and Maven build steps
+- ✅ **Successful Maven build** executed in Jenkins with BUILD SUCCESS
+- ✅ **JAR file** generated and archived as build artifact
+- ✅ **All required screenshots** captured and documented
+- ✅ **CI/CD pipeline** successfully implemented and tested
+
+## 🎯 Learning Outcomes Achieved
+
+Through this task, I have successfully learned and demonstrated:
+
+- **Jenkins job creation and configuration**
+- **Maven build automation in CI/CD**
+- **Git integration with Jenkins**
+- **Build artifact management**
+- **Console output analysis and troubleshooting**
+- **Basic CI/CD pipeline concepts and workflow**
 
 ## 🔧 Troubleshooting
 
