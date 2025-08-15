@@ -187,19 +187,6 @@ Through this task, I have successfully learned and demonstrated:
 3. **Permission issues:** Ensure Jenkins has access to the project directory
 4. **Port conflicts:** Change Jenkins port if 8080 is already in use
 
-### Useful Commands:
-
-```bash
-# Test Maven locally before Jenkins
-mvn clean package
-
-# Check Java version
-java -version
-
-# Check Maven version
-mvn -version
-```
-
 ## 📚 Additional Resources
 
 - [Jenkins Official Documentation](https://www.jenkins.io/doc/)
@@ -207,5 +194,3 @@ mvn -version
 - [Jenkins Pipeline Tutorial](https://www.jenkins.io/doc/book/pipeline/)
 
 ---
-
-**Note:** This task serves as a foundation for more complex CI/CD pipelines. The concepts learned here will be essential for future tasks involving automated testing, deployment, and continuous integration. 
